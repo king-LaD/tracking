@@ -20,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        URL::forceScheme('https');
+        // Force Laravel à utiliser HTTPS pour tous les liens générés
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 }
